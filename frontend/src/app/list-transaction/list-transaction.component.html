@@ -1,0 +1,42 @@
+<h1>Transactons</h1>
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Office Transactons</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><a routerLink="/add">+ Add Transactons</a></th>
+      </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+      </thead>
+    <thead>
+        <tr>
+          <th>Data</th>
+          <th>Description</th>
+          <th>Credit</th>
+          <th>Debit</th>
+          <th>Running Balance</th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr *ngFor="let list of data">
+        <td>{{list.created_date | date:'shortDate'}}</td>
+        <td>{{list.description}}</td>
+        <td *ngIf="list.credit > 0; else noCredit">{{list.credit}}</td>
+        <ng-template #noCredit><td>-</td></ng-template>
+        <td *ngIf="list.debit > 0; else noDebit">{{list.debit}}</td>
+        <ng-template #noDebit><td>-</td></ng-template>
+        <td>{{list.balance}}</td>
+      </tr>
+    </tbody>
+  </table>
